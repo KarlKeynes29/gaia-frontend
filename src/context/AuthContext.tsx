@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
-	
+
 	const login = (userData: User, newToken: string) => {
 		setToken(newToken);
 		setUser(userData);
