@@ -36,6 +36,7 @@
     font-family: var(--font-family-body);
 }
 
+/* Reset browser defaults */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -59,7 +60,11 @@ input, button, textarea, select {
     font: inherit;
 }
 
-:focus-visible {
+button:focus {
+    outline: none;
+}
+
+button:focus-visible {
     outline: 2px solid var(--gaia-accent);
     outline-offset: 4px;
 }
