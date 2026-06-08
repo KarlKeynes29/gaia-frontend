@@ -21,7 +21,4 @@ export default function NavBar() {
 	// Just for prototyping, you can't set if there's no setter.
 	const [cartCount] = useState<number>(5);
 
-}
-
-
-	
+};

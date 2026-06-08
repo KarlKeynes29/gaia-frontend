@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Login } from './pages/Login';
-import N
+
 export const App: React.FC = () => {
     return (
         <AuthProvider>
