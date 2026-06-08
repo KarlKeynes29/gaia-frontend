@@ -23,7 +23,7 @@ export default function NavBar() {
             <div className='max-w-7xl mx-auto flex items-center justify-between'>
                 <a
                     href='/'
-                    className='font-heading text-xl'
+                    className='text-gaia-stone hover:text-gaia-charcoal font-medium text-sm font-heading transition-colors duration-150 tracking-wide'
                 >
                     GAIA<span className='text-primary'>.</span>STORE
                 </a>
