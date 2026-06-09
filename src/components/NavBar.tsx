@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 interface NavLinkProps {
     href: string;
@@ -8,7 +8,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
     <a
         href={href}
-        className='text-text-muted hover:text-text-main font-sans'
+        className='gaia-text-muted hover:gaia-text-main font-sans'
     >
         {children}
     </a>
