@@ -23,9 +23,9 @@ export default function NavBar() {
             <div className='max-w-7xl mx-auto flex items-center justify-between'>
                 <a
                     href='/'
-                    className='text-gaia-stone hover:text-gaia-charcoal font-medium text-sm font-heading transition-colors duration-150 tracking-wide'
+                    className='gaia-text-muted hover:gaia-text-muted font-medium text-sm font-heading transition-colors duration-150 tracking-wide'
                 >
-                    GAIA<span className='text-primary'>.</span>STORE
+                    <span className='gaia-primary'>GAIA</span>
                 </a>
                 <div className='hidden md:flex items-center space-x-8'>
                     <NavLink href='/home'>Home</NavLink>
