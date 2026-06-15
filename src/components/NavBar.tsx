@@ -16,10 +16,10 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [cartCount] = useState<number>(5);
+    // const [cartCount] = useState<number>(5);
 
     return (
-        <nav className='sticky top-0 bg-surface border-b border-border p-4 sm:px-4'>
+        <nav className='sticky top-0 bg-surface border-b border-border p-3 sm:px-4'>
             <div className='max-w-7xl mx-auto flex items-center justify-between w-full'>
                 <a
                     href='/'
@@ -33,7 +33,7 @@ export default function NavBar() {
                     <NavLink href='/vault'>My Vault</NavLink>
                     <NavLink href='/support'>Support</NavLink>
 				</div>
-				
+
 				<div className='flex md:hidden items-center'>
 					<button
 						onClick={() => setIsOpen(!isOpen)}
@@ -65,18 +65,18 @@ export default function NavBar() {
 					    </svg>
 					</button>
 				</div>
-				{isOpen && (
-					<div
-						className='md:hidden border-t border-border mt-4 pt-4 flex flex-col bg-surface w-full justify-between space-y-1 animate-fadeIn'
-					> 
-						<a href='/home' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>Home</a>
-	                    <a href='/shop' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>Marketplace</a>
-	                    <a href='/vault' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>My Vault</a>
-	                    <a href='/support' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>Support</a>
-					</div>
-				)	
-				}
-			</div>
+            </div>
+            <div
+                className={`md:hidden transition-all duration-300 ease-in-out border-border bg-surface overflow-hidden
+                ${isOpen ? 'max-h-60 opacity-100 border-t mt-3 pointer-events-auto' : 'max-h-0 opacity-0 pointer-events-none border-t'}`}
+            >
+                <div className='flex flex-col space-y-1 py-1'>
+                   	<a href='/home' className='mt-4 text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>Home</a>
+                    <a href='/shop' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>Marketplace</a>
+                    <a href='/vault' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>My Vault</a>
+                    <a href='/support' className='text-sm font-sans text-text-muted hover:text-text-main py-2.5 px-3 rounded hover:bg-bg transition-colors duration-200'>Support</a>
+                </div>
+            </div>
         </nav>
     )
 }
