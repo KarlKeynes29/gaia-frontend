@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'react';
 
 export const Login: React.FC = () => {
     const [loginDetails, setLoginDetails] = useState({
@@ -6,33 +6,37 @@ export const Login: React.FC = () => {
         password: ''
     });
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLoginDetails(prev => ({
-            ...prev, 
+            ...prev,
             [name]: value
         }));
 	};
-    
+
 	interface LoginResponse {
-		token: string,
-		role: string,
-		id: string
+        token: string;
+        user: {
+            id: string;
+            email: string;
+            role: string;
+        }
 	}
-    
-    const handleFormSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+
+    const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+
 		console.log('Authentication payload:', loginDetails);
-        
+
 		try {
 			// incomplete
-            const response = await fetch('', {
+            const response = await fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username: loginDetails.identity,
+                    identity: loginDetails.identity,
                     password: loginDetails.password
                 })
             });
@@ -43,12 +47,18 @@ export const Login: React.FC = () => {
             }
 
 			const data: LoginResponse = await response.json();
-			localStorage.setItem('token', data?.token);
-			
+			localStorage.setItem('token', data.token);
+			console.log(`Authorization cleared! Welcome back.`);
 		} catch (error) {
             console.error('Error in authenticating...', error);
         }
     };
+
+    // interface baseShape<specificData> {
+    //     id: string,
+    //     role: string,
+    //     bundledData: specificData
+    // }
 
     return (
         <>
@@ -59,7 +69,7 @@ export const Login: React.FC = () => {
 						<input
 							required
 							id='identity'
-							type='identity'
+							type='text'
 							name='identity'
 							value={loginDetails.identity}
 							onChange={handleInputChange}
@@ -78,7 +88,7 @@ export const Login: React.FC = () => {
 							placeholder='********'
 						/>
 					</div>
-                    <button>Submit</button>
+                    <button type='submit'>Submit</button>
                 </form>
             </div>
         </>
