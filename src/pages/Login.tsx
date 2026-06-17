@@ -30,7 +30,7 @@ export const Login: React.FC = () => {
 
 		try {
 			// incomplete
-            const response = await fetch('/login', {
+            const response = await fetch('http://localhost:8000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,16 +54,10 @@ export const Login: React.FC = () => {
         }
     };
 
-    // interface baseShape<specificData> {
-    //     id: string,
-    //     role: string,
-    //     bundledData: specificData
-    // }
-
     return (
         <>
-            <div className='login-container bg-primary'>
-                <form onSubmit={handleFormSubmit} className='max-h-200 max-w-80 border-2'>
+            <div className='login-container bg-primary w-120 h-100 mx-auto border rounded-md'>
+                <form onSubmit={handleFormSubmit} className='max-h-200 max-w-80'>
                     <div className='mt'>
                         <label htmlFor='identity'>Username or Email:</label>
 						<input

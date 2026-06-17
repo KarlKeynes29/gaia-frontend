@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Strichpunkt+Sans:wght@400..900&display=swap');
 @import 'tailwindcss';
- 
+
 @theme {
     --color-primary: var(--gaia-primary);
     --color-accent: var(--gaia-accent);
@@ -14,13 +14,14 @@
 }
 
 :root {
-    --gaia-primary: #007A33;
-    --gaia-accent: #FA9F2F;
-    --gaia-bg: #121412;
-    --gaia-surface: #1A1D1A;
-    --gaia-text-main: #FFFFFF;
-    --gaia-text-muted: #A0AAA4;
-    --gaia-border: #2D332F;
+    /* --- GAIA PRODUCTION PALETTE --- */
+    --gaia-bg: #F4F6F0;
+    --gaia-surface: #FFFFFF;
+    --gaia-primary: #1E3F20;
+    --gaia-accent: #D97443;
+    --gaia-text-main: #1A241B;
+    --gaia-text-muted: #606C5A;
+    --gaia-border: #E2E7DC;
 
     --font-family-heading: 'Strichpunkt Sans', sans-serif;
     --font-family-body: 'Arimo', sans-serif;
@@ -29,10 +30,10 @@
     display: flex;
     flex-direction: column;
 
-    /* Dark theme */
-    color-scheme: dark;
+    /* Light theme base rules */
+    color-scheme: light;
     background-color: var(--gaia-bg);
-    color: var(--gaia-text-muted);
+    color: var(--gaia-text-main);
     font-family: var(--font-family-body);
 }
 
@@ -41,13 +42,18 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--gaia-bg);
+    min-height: 100svh;
+}
+
 body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
     margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
-    color: var(--gaia-text-main);
+    color: var(--gaia-primary); /* Headings look amazing in deep green */
     font-weight: 700;
 }
 
