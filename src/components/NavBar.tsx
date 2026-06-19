@@ -25,7 +25,7 @@ export default function NavBar() {
                     href='/'
                     className='text-text-muted font-medium text-sm font-heading'
                 >
-                    <span className='gaia-primary'>GAIA</span>
+                    <span className='gaia-primary'>Cyber.GAIA</span>
                 </a>
                 <div className='hidden md:flex items-center space-x-8'>
                     <NavLink href='/home'>Home</NavLink>

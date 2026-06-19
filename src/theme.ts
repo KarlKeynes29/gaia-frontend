@@ -1,19 +1,19 @@
 export const gaiaTheme = {
     colors: {
         // for key actions
-        primary: '#D6D85D',
+        primary: '#39ff14',
         // price highlights and other accents
-        accent: '#D97443',
+        accent: '#00f0ff',
         // main background
-        background: '#ECEDB0',
+        background: '#0d081b',
         // color for product card surface/background
-        surface: '#ECEDB0',
+        surface: '#171030',
         // titles
-        textMain: '#1A241B',
+        textMain: '#ffffff',
         // descriptions
-        textLight: '#606C5A',
+        textLight: '#bc99ff',
         // edges
-        border: '#F68537',
+        border: '#321b63',
     }
 }
 export type GaiaTheme = typeof gaiaTheme;

@@ -2,10 +2,11 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-primary: var(--gaia-primary);
-    --color-accent: var(--gaia-accent);
+    /* --- TAILWIND V4 VARIABLE BINDINGS --- */
     --color-bg: var(--gaia-bg);
     --color-surface: var(--gaia-surface);
+    --color-primary: var(--gaia-primary);
+    --color-accent: var(--gaia-accent);
     --color-text-main: var(--gaia-text-main);
     --color-text-muted: var(--gaia-text-muted);
     --color-border: var(--gaia-border);
@@ -14,14 +15,14 @@
 }
 
 :root {
-    /* --- GAIA PRODUCTION PALETTE --- */
-    --gaia-bg: #F4F6F0;
-    --gaia-surface: #FFFFFF;
-    --gaia-primary: #1E3F20;
-    --gaia-accent: #D97443;
-    --gaia-text-main: #1A241B;
-    --gaia-text-muted: #606C5A;
-    --gaia-border: #E2E7DC;
+    /* --- GAIA ARCADE CABINET PALETTE --- */
+    --gaia-bg: #0d081b;         /* Deep arcade cabinet shadow (Dark indigo-black) */
+    --gaia-surface: #171030;    /* Glowing token slot background (Rich purple-navy) */
+    --gaia-primary: #00cc00;    /* Neon Pink/Magenta (Perfect for flashing headlines and primary actions) */
+    --gaia-accent: #00f0ff;     /* Cyber Cyan (Perfect for pricing, neon borders, and selection highlights) */
+    --gaia-text-main: #ffffff;  /* High-voltage white for extreme contrast */
+    --gaia-text-muted: #bc99ff; /* Radiant violet-gray for labels and placeholders */
+    --gaia-border: #321b63;     /* Laser-line divider border */
 
     --font-family-heading: 'Strichpunkt Sans', sans-serif;
     --font-family-body: 'Arimo', sans-serif;
@@ -30,8 +31,7 @@
     display: flex;
     flex-direction: column;
 
-    /* Light theme base rules */
-    color-scheme: light;
+    color-scheme: dark;
     background-color: var(--gaia-bg);
     color: var(--gaia-text-main);
     font-family: var(--font-family-body);
@@ -53,8 +53,9 @@ body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
-    color: var(--gaia-primary); /* Headings look amazing in deep green */
+    color: var(--gaia-primary); /* Headings pop in hot neon pink */
     font-weight: 700;
+    text-shadow: 0 0 8px rgba(255, 0, 127, 0.5); /* Subtle retro glow effect */
 }
 
 img, picture, svg {
