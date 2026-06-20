@@ -75,3 +75,11 @@ button:focus-visible {
     outline: 2px solid var(--gaia-accent);
     outline-offset: 4px;
 }
+@keyframes button-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+.animate-shake {
+    animation: button-shake 0.6s ease-in-out 2
+}

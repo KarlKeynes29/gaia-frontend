@@ -2,15 +2,15 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
-import { Login } from './pages/Login';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
 import NavBar from './components/NavBar';
 
 export const App: React.FC = () => {
     return (
         <AuthProvider>
 			<ThemeProvider>
-			    <NavBar />
-                <Login />
+                <RouterProvider router={router} />
             </ThemeProvider>
         </AuthProvider>
     );
