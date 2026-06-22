@@ -7,7 +7,7 @@ export const Register: React.FC = () => {
 
     const handleInputChange = () => {
 
-}
+    }
     // return (
 
     // )
