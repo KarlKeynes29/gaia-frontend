@@ -20,22 +20,22 @@ export const router = createBrowserRouter([
                 path: 'register',
                 element: <Register />
             },
-            {
-                path: 'home',
-                element: <Home />
-            },
-            {
-                path: 'marketplace',
-                element: <Marketplace />
-            },
-            {
-                path: 'my-vault',
-                element: <MyVault />
-            },
-            {
-                path: 'support',
-                element: <Support />
-            }
+            // {
+            //     path: 'home',
+            //     element: <Home />
+            // },
+            // {
+            //     path: 'marketplace',
+            //     element: <Marketplace />
+            // },
+            // {
+            //     path: 'my-vault',
+            //     element: <MyVault />
+            // },
+            // {
+            //     path: 'support',
+            //     element: <Support />
+            // }
         ]
     }
 ]);
