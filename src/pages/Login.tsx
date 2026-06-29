@@ -31,13 +31,15 @@ export const Login: React.FC = () => {
         e.preventDefault();
         console.log('Authentication payload:', loginDetails);
 
+        const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
         if (isLoading) return;
 
         setIsLoading(true);
         setIsError(false);
 
         try {
-            const response = await fetch('http://localhost:8000/login', {
+            const response = await fetch(`${BASE_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
