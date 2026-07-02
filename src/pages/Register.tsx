@@ -2,7 +2,6 @@ import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'reac
 import { useNavigate } from 'react-router-dom';
 
 export const Register: React.FC = () => {
-
     interface RegisterInterface {
         username: string;
         password: string;
@@ -38,7 +37,7 @@ export const Register: React.FC = () => {
             ...prev,
             [name]: value
         }));
-    }
+    };
 
     const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
@@ -66,39 +65,120 @@ export const Register: React.FC = () => {
         }
     };
 
-        // username: '',
-        // password: '',
-        // firstName: '',
-        // middleName: '',
-        // lastName: '',
-        // email: '',
-        // birthday: '',
-        // phoneNumber: '',
-        // address: '',
-        // role: 'USER'
     return (
-    <div className='bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all ${isError ? animate-shake : ''}'>
-        <form className='flex' onSubmit={handleFormSubmit}>
-            <label htmlFor='username'>Username:</label>
-            <input name='username' required></input>
-            <label htmlFor='password'>Password:</label>
-            <input name='password' required></input>
-            <label htmlFor='firstname'>First Name:</label>
-            <input name='firstname' required></input>
-            <label htmlFor='middlename'>Middle Name:</label>
-            <input name='middlename'></input>
-            <label htmlFor='lastname'>Last Name:</label>
-            <input name='lastname'></input>
-            <label htmlFor='email'>Email:</label>
-            <input name='email'></input>
-            <label htmlFor='birthday'>Birthday:</label>
-            <input name='birthday'></input>
-            <label htmlFor='phonenumber'>Phone Number:</label>
-            <input name='phonenumber'></input>
-            <label htmlFor='address'>Address:</label>
-            <input name='address'></input>
-        </form>
-    </div>
-
-    )
-}
+        <div className="my-8 mx-auto bg-surface w-full max-w-2xl min-h-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all">
+            <div className='text-center mb-6'>
+                <h1 className='text-2xl font-heading text-primary'>Register an account</h1>
+            </div>
+            <form className='flex flex-col gap-5' onSubmit={handleFormSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='username'>Username:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='username'
+                            value={registrationDetails.username}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='password'>Password:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='password'
+                            type="password"
+                            value={registrationDetails.password}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='firstName'>First Name:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='firstName'
+                            value={registrationDetails.firstName}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='middleName'>Middle Name:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='middleName'
+                            value={registrationDetails.middleName || ''}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='lastName'>Last Name:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='lastName'
+                            value={registrationDetails.lastName}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='email'>Email:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='email'
+                            type="email"
+                            value={registrationDetails.email}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='phoneNumber'>Phone Number:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='phoneNumber'
+                            value={registrationDetails.phoneNumber || ''}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className='flex flex-col gap-2 sm:col-span-1'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='birthday'>Birthday:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='birthday'
+                            type="date"
+                            value={registrationDetails.birthday || ''}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className='flex flex-col gap-2 sm:col-span-2'>
+                        <label className="text-xs font-heading uppercase tracking-wider text-text-muted" htmlFor='address'>Address:</label>
+                        <input
+                            className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
+                            name='address'
+                            value={registrationDetails.address || ''}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                </div>
+                <div className='flex items-center justify-between mt-4 pt-4 border-t border-border/30'>
+                    <a className='text-sm text-text-muted hover:text-primary transition-colors' href='/login'>Already have an account?</a>
+                    <button
+                        type="submit"
+                        disabled={isLoading}
+                        className='border border-border rounded-lg px-5 py-2 hover:bg-surface-variant disabled:opacity-50 transition-all cursor-pointer'
+                    >
+                        {isLoading ? 'Submitting...' : 'Submit'}
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+};
