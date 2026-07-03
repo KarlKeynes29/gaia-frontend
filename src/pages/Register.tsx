@@ -168,7 +168,7 @@ export const Register: React.FC = () => {
                         />
                     </div>
                 </div>
-                <div className='flex items-center justify-between mt-4 pt-4 border-t border-border/30'>
+                <div className='flex items-center justify-between mt-4 pt-4 border-t border-border'>
                     <a className='text-sm text-text-muted hover:text-primary transition-colors' href='/login'>Already have an account?</a>
                     <button
                         type="submit"
