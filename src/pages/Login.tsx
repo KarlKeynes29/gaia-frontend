@@ -1,5 +1,6 @@
 import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export const Login: React.FC = () => {
     const navigate = useNavigate();
@@ -54,8 +55,9 @@ export const Login: React.FC = () => {
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Authorization rejected.');
-            }
-
+			}
+            
+			toast.success('Welcome back!');
             navigate('/home');
 
             const data: LoginResponse = await response?.json();

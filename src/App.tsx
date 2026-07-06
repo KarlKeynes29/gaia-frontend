@@ -1,16 +1,30 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
 
 export const App: React.FC = () => {
-    return (
-        <AuthProvider>
-			<ThemeProvider>
-                <RouterProvider router={router} />
-            </ThemeProvider>
-        </AuthProvider>
+	return (
+		<>
+			<Toaster 
+		        position="top-center" 
+		        reverseOrder={false} 
+		        toastOptions={{
+		          style: {
+		            background: '#333',
+		            color: '#fff',
+		            borderRadius: '8px',
+		          }
+		        }}
+	        />
+	        <AuthProvider>
+				<ThemeProvider>
+	                <RouterProvider router={router} />
+	            </ThemeProvider>
+	        </AuthProvider>
+		</>
+		
     );
 };
