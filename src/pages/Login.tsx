@@ -6,7 +6,7 @@ export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [loginDetails, setLoginDetails] = useState({
+    const [loginDetails, setLoginDetails]= useState({
         identity: '',
         password: ''
     });
@@ -30,14 +30,10 @@ export const Login: React.FC = () => {
 
     const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        console.log('Authentication payload:', loginDetails);
-
         const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
         if (isLoading) return;
-
         setIsLoading(true);
-        setIsError(false);
 
         try {
             const response = await fetch(`${BASE_URL}/login`, {
@@ -56,19 +52,21 @@ export const Login: React.FC = () => {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Authorization rejected.');
 			}
-            
-			toast.success('Welcome back!');
-            navigate('/home');
 
             const data: LoginResponse = await response?.json();
             localStorage.setItem('token', data.token);
-            console.log(`Authorization cleared! Welcome back.`);
+
+            toast.success('Welcome back!');
+            navigate('/home');
         } catch (error) {
             console.error('Error in authenticating...', error);
+            const errorMessage = error instanceof Error ? error.message : 'Invalid email or password';
             setIsError(true);
+            toast.error(errorMessage);
             setTimeout(() => {
                 setIsError(false);
             }, 400);
+            setLoginDetails(prev => ({ ...prev, password: '' }));
         } finally {
             setIsLoading(false);
         }
@@ -82,7 +80,7 @@ export const Login: React.FC = () => {
                 </h2>
                 <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="identity" className="text-xs mt-5 font-heading uppercase tracking-wider text-text-muted">
+                        <label htmlFor="identity" className="text-xs mt-5 font-heading uppercase tracking-wider text-text-muted">+
                             Player Identity
                         </label>
                         <input
@@ -118,9 +116,8 @@ export const Login: React.FC = () => {
                     <button
                         type="submit"
                         className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-heading font-bold uppercase tracking-widest py-3 px-6 rounded-lg shadow-[0_4px_0_#39ff14] active:translate-y-0.5 active:shadow-[0_2px_0_#39ff14] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
-                        onClick={() => setIsLoading(!isError)}
                     >
-                        LOGIN
+                        {isLoading ? 'Verifying...' : 'Submit'}
                     </button>
                     <div className='flex flex-column'>
                         <a className='text-sm hover:text-text-muted active:text-text-accent' href='/register'>
