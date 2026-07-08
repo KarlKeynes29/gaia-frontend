@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
+    const [isError, setIsError] = useState(null);
     const [loginDetails, setLoginDetails]= useState({
         identity: '',
         password: ''
@@ -60,7 +60,7 @@ export const Login: React.FC = () => {
             navigate('/home');
         } catch (error) {
             console.error('Error in authenticating...', error);
-            const errorMessage = error instanceof Error ? error.message : 'Invalid email or password';
+            // const errorMessage = error instanceof Error ? error.message : 'Invalid email or password';
             setIsError(true);
             toast.error(errorMessage);
             setTimeout(() => {
