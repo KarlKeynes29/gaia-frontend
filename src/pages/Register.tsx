@@ -1,5 +1,6 @@
 import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export const Register: React.FC = () => {
     interface RegisterInterface {
@@ -41,6 +42,7 @@ export const Register: React.FC = () => {
 
     const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+        if (isLoading) return;
         setIsLoading(true);
 
         try {
@@ -57,9 +59,12 @@ export const Register: React.FC = () => {
                 throw new Error(errorData.message || 'Error in submitting form details.');
             }
 
+            toast.success("Registration Successful!");
             navigate('/login');
         } catch (error) {
             console.error('Error while registering user details:', error);
+            const errorMessage = error instanceof Error ? error.message : 'Something went wrong during registration...';
+            toast.error(errorMessage);
         } finally {
             setIsLoading(false);
         }

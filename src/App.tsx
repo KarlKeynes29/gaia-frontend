@@ -8,9 +8,9 @@ import { router } from './router';
 export const App: React.FC = () => {
 	return (
 		<>
-			<Toaster 
-		        position="top-center" 
-		        reverseOrder={false} 
+			<Toaster
+		        position="top-right"
+		        reverseOrder={false}
 		        toastOptions={{
 		          style: {
 		            background: '#333',
@@ -25,6 +25,6 @@ export const App: React.FC = () => {
 	            </ThemeProvider>
 	        </AuthProvider>
 		</>
-		
+
     );
 };

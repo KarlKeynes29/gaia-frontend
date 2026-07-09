@@ -5,12 +5,12 @@ import toast from 'react-hot-toast';
 export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(null);
+    const [isError, setIsError] = useState(false);
     const [loginDetails, setLoginDetails]= useState({
         identity: '',
         password: ''
     });
-
+    const containerRef = React.useRef<HTMLDivElement>(null);
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLoginDetails(prev => ({
@@ -47,7 +47,6 @@ export const Login: React.FC = () => {
                 })
             });
 
-
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Authorization rejected.');
@@ -60,13 +59,20 @@ export const Login: React.FC = () => {
             navigate('/home');
         } catch (error) {
             console.error('Error in authenticating...', error);
-            // const errorMessage = error instanceof Error ? error.message : 'Invalid email or password';
+            const errorMessage = error instanceof Error ? error.message : 'Something happened while logging in...';
             setIsError(true);
             toast.error(errorMessage);
             setTimeout(() => {
                 setIsError(false);
             }, 400);
             setLoginDetails(prev => ({ ...prev, password: '' }));
+            if (containerRef.current) {
+                containerRef.current.classList.add('animate-shake');
+                setTimeout(() => {
+                    containerRef.current?.classList.remove('animate-shake');
+                    containerRef.current?.classList.
+                }, 300);
+            }
         } finally {
             setIsLoading(false);
         }
@@ -74,13 +80,16 @@ export const Login: React.FC = () => {
 
     return (
         <div className="flex min-h-[80vh] items-center justify-center px-4">
-            <div className="login-container bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all ${isError ? animate-shake : ''}">
-                <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase ${isError === false ? 'text-red-700 ' : 'text-primary'}`}>
-                    {isError === false ? 'Access denied!' : 'Enter Cyber Gaia'}
+            <div
+                ref={containerRef}
+                className="login-container bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all"
+            >
+                <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase ${isError ? 'text-red-700' : 'text-primary'}`}>
+                    {isError ? 'Access denied!' : 'Enter Cyber Gaia'}
                 </h2>
                 <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="identity" className="text-xs mt-5 font-heading uppercase tracking-wider text-text-muted">+
+                        <label htmlFor="identity" className="text-xs mt-5 font-heading uppercase tracking-wider text-text-muted">
                             Player Identity
                         </label>
                         <input
