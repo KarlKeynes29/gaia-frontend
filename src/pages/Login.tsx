@@ -64,13 +64,12 @@ export const Login: React.FC = () => {
             toast.error(errorMessage);
             setTimeout(() => {
                 setIsError(false);
-            }, 400);
+            }, 2000);
             setLoginDetails(prev => ({ ...prev, password: '' }));
             if (containerRef.current) {
                 containerRef.current.classList.add('animate-shake');
                 setTimeout(() => {
                     containerRef.current?.classList.remove('animate-shake');
-                    containerRef.current?.classList.
                 }, 300);
             }
         } finally {
@@ -84,8 +83,8 @@ export const Login: React.FC = () => {
                 ref={containerRef}
                 className="login-container bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all"
             >
-                <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase ${isError ? 'text-red-700' : 'text-primary'}`}>
-                    {isError ? 'Access denied!' : 'Enter Cyber Gaia'}
+                <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase transform transition-all scale-100 duration-300 ${isError ? 'text-red-700 tracking-widest blur-[4.0]' : 'text-primary tracking-wide blur-0'}`}>
+                    {isError ? '☠️ Access Denied ☠️' : 'Enter Cyber Gaia'}
                 </h2>
                 <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div className="flex flex-col gap-2">

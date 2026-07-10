@@ -44,14 +44,20 @@ export const Register: React.FC = () => {
         e.preventDefault();
         if (isLoading) return;
         setIsLoading(true);
-
+        const BASE_URL = import.meta.env.VITE_API_BASE_URL;
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/register`, {
+            const response = await fetch(`${BASE_URL}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(registrationDetails)
+                body: JSON.stringify({
+                    ...registrationDetails,
+                    middleName: registrationDetails.middleName?.trim(),
+                    birthday: registrationDetails.birthday,
+                    phoneNumber: registrationDetails.phoneNumber?.trim(),
+                    address: registrationDetails.address?.trim(),
+                })
             });
 
             if (!response.ok) {
@@ -60,7 +66,7 @@ export const Register: React.FC = () => {
             }
 
             toast.success("Registration Successful!");
-            navigate('/login');
+            setTimeout(() => navigate('/login'), 300)
         } catch (error) {
             console.error('Error while registering user details:', error);
             const errorMessage = error instanceof Error ? error.message : 'Something went wrong during registration...';
@@ -93,6 +99,7 @@ export const Register: React.FC = () => {
                             className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
                             name='password'
                             type="password"
+                            autoComplete="new-password"
                             value={registrationDetails.password}
                             onChange={handleInputChange}
                             required
