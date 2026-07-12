@@ -2,7 +2,6 @@
 @import 'tailwindcss';
 
 @theme {
-    /* --- TAILWIND V4 VARIABLE BINDINGS --- */
     --color-bg: var(--gaia-bg);
     --color-surface: var(--gaia-surface);
     --color-primary: var(--gaia-primary);
@@ -53,9 +52,9 @@ body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
-    color: var(--gaia-primary); /* Headings pop in hot neon pink */
+    color: var(--gaia-primary);
     font-weight: 700;
-    text-shadow: 0 0 8px rgba(255, 0, 127, 0.5); /* Subtle retro glow effect */
+    text-shadow: 0 0 8px rgba(255, 0, 127, 0.5);
 }
 
 img, picture, svg {

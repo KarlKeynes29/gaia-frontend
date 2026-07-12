@@ -13,13 +13,33 @@ export const ForgotPassword: React.FC = () => {
 
     const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`${BASE_URL}/forgot-password`, {
+		const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+		try {
+			const response = await fetch(`${BASE_URL}/forgot-password`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: { email }
+			});
+		} catch (error) {
+			const errorMessage = error instanceof Error ? error?.message : 'Something went wrong while requesting for password change.'
+			console.error('Error while submitting the email.', error);
+			toast.error(errorMessage);
+		} finally {
+			setIsLoading(false);
+		}
+
+		
+		const response = await fetch(`${BASE_URL}/forgot-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email }),
-        });
-    }
+		});
+
+		if (!response.ok) { 
+			asd
+        }
+	
+	}
 }
