@@ -1,11 +1,13 @@
 import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { ForgotPassword } from './ForgotPassword';
 
 export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [isForgotPasswordModal, setForgotPasswordModal] = useState(false);
     const [loginDetails, setLoginDetails]= useState({
         identity: '',
         password: ''
@@ -135,9 +137,9 @@ export const Login: React.FC = () => {
                             Forgot your password?
                         </a>
                     </div>
-
                 </form>
             </div>
+            <ForgotPassword isOpen={isForgotPasswordModal} />
         </div>
     );
 }
