@@ -2,7 +2,6 @@ import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'reac
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-
 interface ForgotPasswordModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -53,14 +52,18 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
 
     return (
         <>
-            <div className='w-100 border border-border rounded my-8 min-h-fit p-8 transition-all shadow-[0_0_15px_rgba(50,27,99,0.5)]'>
+            <div>
+                <div className='w-full border border-border rounded my-8 min-h-fit p-8 transition-all shadow-[0_0_15px_rgba(50,27,99,0.5)]'>
                 <h2 className='text-center'>Forgot your password?</h2>
+                <button onClick={onClose}>X</button>
                 <form onSubmit={handleFormSubmit}>
                     <label className='text-xs font-heading uppercase tracking-wider text-text-muted'>Email:</label>
                     <input className='w-full' onChange={handleInputChange}></input>
-                    <button type='button'>{isLoading ? 'Transmitting...' : 'Verify'}</button>
+                    <button onClick={onClose} type='button'>{isLoading ? 'Transmitting...' : 'Verify'}</button>
                 </form>
             </div>
+            </div>
+
         </>
     )
 }

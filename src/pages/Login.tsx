@@ -7,7 +7,7 @@ export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [isForgotPasswordModal, setForgotPasswordModal] = useState(false);
+    const [isShowForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
     const [loginDetails, setLoginDetails]= useState({
         identity: '',
         password: ''
@@ -85,7 +85,7 @@ export const Login: React.FC = () => {
                 ref={containerRef}
                 className="login-container bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all"
             >
-                <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase transform transition-all scale-100 duration-300 ${isError ? 'text-red-700 tracking-widest blur-[4.0]' : 'text-primary tracking-wide blur-0'}`}>
+                <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase transform transition-all scale-100 duration-300 ${isError ? 'text-red-700 tracking-widest blur-[xs]' : 'text-primary tracking-wide blur-0'}`}>
                     {isError ? '☠️ Access Denied ☠️' : 'Enter Cyber Gaia'}
                 </h2>
                 <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -133,13 +133,20 @@ export const Login: React.FC = () => {
                         <a className='text-sm hover:text-text-muted active:text-text-accent' href='/register'>
                             Register an account
                         </a>
-                        <a className='text-sm ml-auto not-target:hover:text-text-muted active:text-text-accent' href='/forgot-password'>
+                        <button
+                            type='button'
+                            className='text-sm ml-auto not-target:hover:text-text-muted active:text-text-accent'
+                            onClick={() => setShowForgotPasswordModal(true)}
+                        >
                             Forgot your password?
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>
-            <ForgotPassword isOpen={isForgotPasswordModal} />
+            <ForgotPassword
+                isOpen={isShowForgotPasswordModal}
+                onClose={() => { setShowForgotPasswordModal(false) }}
+            />
         </div>
     );
 }
