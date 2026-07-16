@@ -80,7 +80,7 @@ export const Login: React.FC = () => {
     };
 
     return (
-        <div className="flex min-h-[80vh] items-center justify-center px-4">
+       <div className="flex min-h-[80vh] items-center justify-center px-4">
             <div
                 ref={containerRef}
                 className="login-container bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all"
@@ -148,5 +148,6 @@ export const Login: React.FC = () => {
                 onClose={() => { setShowForgotPasswordModal(false) }}
             />
         </div>
+
     );
 }
