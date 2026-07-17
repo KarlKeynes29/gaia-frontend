@@ -14,14 +14,13 @@
 }
 
 :root {
-    /* --- GAIA ARCADE CABINET PALETTE --- */
-    --gaia-bg: #0d081b;         /* Deep arcade cabinet shadow (Dark indigo-black) */
-    --gaia-surface: #171030;    /* Glowing token slot background (Rich purple-navy) */
-    --gaia-primary: #00cc00;    /* Neon Pink/Magenta (Perfect for flashing headlines and primary actions) */
-    --gaia-accent: #00f0ff;     /* Cyber Cyan (Perfect for pricing, neon borders, and selection highlights) */
-    --gaia-text-main: #ffffff;  /* High-voltage white for extreme contrast */
-    --gaia-text-muted: #bc99ff; /* Radiant violet-gray for labels and placeholders */
-    --gaia-border: #321b63;     /* Laser-line divider border */
+    --gaia-bg: #0d081b;
+    --gaia-surface: #171030;
+    --gaia-primary: #00cc00;
+    --gaia-accent: #00f0ff;
+    --gaia-text-main: #ffffff;
+    --gaia-text-muted: #bc99ff;
+    --gaia-border: #321b63;
 
     --font-family-heading: 'Strichpunkt Sans', sans-serif;
     --font-family-body: 'Arimo', sans-serif;
@@ -66,10 +65,15 @@ input, button, textarea, select {
     font: inherit;
 }
 
+button.forgot-button {
+    font-size: 0.875rem;
+}
+button.forgot-button:hover {
+    cursor: pointer;
+}
 button:focus {
     outline: none;
 }
-
 button:focus-visible {
     outline: 2px solid var(--gaia-accent);
     outline-offset: 4px;

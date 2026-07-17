@@ -130,12 +130,12 @@ export const Login: React.FC = () => {
                         {isLoading ? 'Verifying...' : 'Submit'}
                     </button>
                     <div className='flex flex-column'>
-                        <a className='text-sm hover:text-text-muted active:text-text-accent' href='/register'>
+                        <a className='text-sm hover:text-text-muted active:text-text-accent font-sans font-normal' href='/register'>
                             Register an account
                         </a>
                         <button
                             type='button'
-                            className='text-sm ml-auto not-target:hover:text-text-muted active:text-text-accent'
+                            className='forgot-button text-sm ml-auto hover:text-text-muted active:text-text-accent font-sans font-normal'
                             onClick={() => setShowForgotPasswordModal(true)}
                         >
                             Forgot your password?

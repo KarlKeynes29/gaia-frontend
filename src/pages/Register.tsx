@@ -185,7 +185,7 @@ export const Register: React.FC = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className='border border-border rounded-lg px-5 py-2 hover:bg-surface-variant disabled:opacity-50 transition-all cursor-pointer'
+                        className='border border-border rounded-lg px-5 py-2 hover:text-text-muted disabled:opacity-50 transition-all cursor-pointer'
                     >
                         {isLoading ? 'Submitting...' : 'Submit'}
                     </button>
