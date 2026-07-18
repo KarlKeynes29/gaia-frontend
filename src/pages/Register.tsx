@@ -181,11 +181,11 @@ export const Register: React.FC = () => {
                     </div>
                 </div>
                 <div className='flex items-center justify-between mt-4 pt-4 border-t border-border'>
-                    <a className='text-sm text-text-muted hover:text-primary transition-colors' href='/login'>Already have an account?</a>
+                    <a className='text-sm text-text-main hover:text-text-muted transition-colors' href='/login'>Already have an account?</a>
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className='border border-border rounded-lg px-5 py-2 hover:text-text-muted disabled:opacity-50 transition-all cursor-pointer'
+                        className='rounded-lg px-5 py-2 hover:text-text-muted disabled:opacity-50 bg-primary hover:bg-primary shadow-[0_4px_0_#39ff14] active:translate-y-0.5 active:shadow-[0_2px_0_#39ff14] transition-all cursor-pointer'
                     >
                         {isLoading ? 'Submitting...' : 'Submit'}
                     </button>

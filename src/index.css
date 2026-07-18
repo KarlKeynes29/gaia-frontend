@@ -61,7 +61,7 @@ img, picture, svg {
     display: block;
 }
 
-input, button, textarea, select {
+input, textarea, select {
     font: inherit;
 }
 
