@@ -4,4 +4,8 @@ export const ResetPasswordPage = () => {
     const [searchParams] = useSearchParams();
     const token = searchParams.get('token');
     const navigate = useNavigate();
+
+    return (
+
+    )
 }
