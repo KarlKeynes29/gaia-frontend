@@ -1,4 +1,4 @@
-import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'react';
+import React, { useState, type ChangeEvent, type EventHandler, type MouseEventHandler, type SubmitEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -18,8 +18,7 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
         setEmail(e.target.value);
     };
 
-    const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
-        e.preventDefault();
+    const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
         const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
         if (isLoading) return;
@@ -49,16 +48,15 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
             setIsLoading(false);
         }
     }
-// bg-black/75 backdrop-blur-md
+
     return (
-        <>
             <div className='fixed inset-0 z-50 w-full flex items-center justify-center bg-black/1 backdrop-blur-md p-4'>
                 <div className='w-110 bg-surface border border-border rounded-lg my-8 p-8'>
                     <div className='flex justify-between mb-3'>
                         <h2 className='text-center'>Forgot your password?</h2>
                         <button className='hover:text-accent transition-colors text-2xl leading-none' onClick={onClose}>&times;</button>
                     </div>
-                    <form onSubmit={handleFormSubmit}>
+                    <div onClick={handleSubmit}>
                         <div className='flex justify-between p-2'>
                             <label className='text-xs font-heading uppercase tracking-wider text-text-muted'>Email:</label>
                             <p className='text-xs'>Enter your email so we can verify!</p>
@@ -68,20 +66,18 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
                             onChange={handleInputChange}
                         ></input>
                         <div className='flex justify-end items-center'>
-                            <button
-                                className='text-sm font-sans text-text-main  hover:text-text-muted cursor-pointer transition-colors p-2 mt-3'
-                                type='button'
-                                onClick={onClose}
-                            >Cancel</button>
-                            <button
-                                className='ml-49 w-45 mt-4 bg-primary hover:bg-primary/90 hover:text-text-muted rounded-lg shadow-[0_4px_0_#39ff14] active:translate-y-0.5 active:shadow-[0_2px_0_#39ff14] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent'
-                                // onClick={handleFormSubmit}
-                                type='button'
-                            >{isLoading ? 'Transmitting...' : 'Verify'}</button>
-                        </div>
-                    </form>
+                        <button
+                            className='text-sm font-sans text-text-main  hover:text-text-muted cursor-pointer transition-colors p-2 mt-3'
+                            type='button'
+                            onClick={onClose}
+                        >Cancel</button>
+                        <button
+                            className='ml-49 w-45 mt-4 bg-primary hover:bg-primary/90 hover:text-text-muted rounded-lg shadow-[0_4px_0_#39ff14] active:translate-y-0.5 active:shadow-[0_2px_0_#39ff14] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent'
+                            onClick={handleSubmit}
+                            type='button'
+                        >{isLoading ? 'Transmitting...' : 'Verify'}</button>
+                    </div>
                 </div>
             </div>
-        </>
     )
 }
