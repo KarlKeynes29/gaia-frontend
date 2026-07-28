@@ -1,8 +1,9 @@
-import React, { useSearchParams, useNavigate, useState, type ChangeEvent } from 'react-router-dom';
+import React, { useState, type ChangeEvent } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 interface ResetPasswordDetails {
-    token: string | null;
-    password: string | null;
+    token: string | '';
+    password: string | '';
 }
 
 export const ResetPasswordPage: React.FC = () => {
@@ -17,13 +18,16 @@ export const ResetPasswordPage: React.FC = () => {
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setResetPasswordDetails(prev => ({
+        setResetPasswordDetails((prev) => ({
             ...prev,
             [name]: value
         }));
-    }
+    };
 
     return (
 
+        <div>
+
+        </div>
     )
 }

@@ -3,16 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ForgotPassword } from './ForgotPassword';
 
+interface LoginDetails {
+    identity: string | '',
+    password: string | ''
+}
+
 export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isShowForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
-    const [loginDetails, setLoginDetails]= useState({
+    const [loginDetails, setLoginDetails]= useState<LoginDetails>({
         identity: '',
         password: ''
     });
+
     const containerRef = React.useRef<HTMLDivElement>(null);
+
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLoginDetails(prev => ({
