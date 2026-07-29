@@ -22,7 +22,7 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
 
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    // I did it this way because I just wanted to code in a more javascript way rather than a react way.
+    // Study note: I did it this way because I just wanted to code in a more javascript way rather than a react way, if that makes sense.
     const countdown = async () => {
         for (let n = 6; n > 0; n--) {
             setSeconds(n - 1);

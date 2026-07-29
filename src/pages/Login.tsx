@@ -13,7 +13,7 @@ export const Login: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isShowForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
-    const [loginDetails, setLoginDetails]= useState<LoginDetails>({
+    const [loginDetails, setLoginDetails] = useState<LoginDetails>({
         identity: '',
         password: ''
     });
