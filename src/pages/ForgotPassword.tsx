@@ -42,7 +42,7 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
         setIsLoading(true);
 
         try {
-            const response = await fetch(`${BASE_URL}/users/forgot-password`, {
+            const response = await fetch(`${BASE_URL}/api/v1/users/forgot-password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
