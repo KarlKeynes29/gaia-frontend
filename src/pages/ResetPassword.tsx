@@ -66,7 +66,7 @@ export const ResetPasswordPage: React.FC = () => {
     }
 
     return (
-		<div className='bg-surface p-8  min-h-fit'>
+		<div className='bg-surface p-8 min-h-fit'>
 			<h2 className='text-left'>Reset your password</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
