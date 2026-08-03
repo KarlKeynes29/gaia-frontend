@@ -77,7 +77,7 @@ export const Register: React.FC = () => {
     };
 
     return (
-        <div className="mx-auto my-8 bg-surface w-full max-w-2xl min-h-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all">
+        <div className="mx-auto bg-surface w-full max-w-2xl min-h-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all">
             <div className='text-center mb-6'>
                 <h1 className='text-2xl font-heading text-primary'>Register an account</h1>
             </div>

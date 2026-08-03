@@ -63,6 +63,8 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
             console.error('Error while executing recovery sequence:', error);
             const errorMessage = error instanceof Error ? error.message : 'Something happened while request was being processed.';
             toast.error(errorMessage);
+		} finally {
+			setTimeout(() => { setIsLoading(false) }, 400);
         }
     }
 
