@@ -1,4 +1,4 @@
-import React, { useState, useEffect, type ChangeEvent, type SubmitEventHandler } from 'react';
+import React, { useState, type ChangeEvent, type SubmitEventHandler } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -14,9 +14,9 @@ export const ResetPasswordPage: React.FC = () => {
         token: '',
         password: ''
 	});
-    
+
 	const token = searchParams.get('token') || '';
-	
+
     const navigate = useNavigate();
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,7 @@ export const ResetPasswordPage: React.FC = () => {
 	        toast.error('Invalid or missing reset token.');
 	        return;
 		}
-		
+
 		const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 		if (isLoading) return;
@@ -52,17 +52,25 @@ export const ResetPasswordPage: React.FC = () => {
 
 			if (!response.ok) {
 				const errorData = await response.json();
-				throw new Error(errorData.message || 'Error while changing password.');	
+				throw new Error(errorData.message || 'Error while changing password.');
 			}
-			
+
 			toast.success('Password successfully changed!');
 		} catch (error) {
-			console.error('Error in changing password...', error);
-			const errorMessage = error instanceof Error ? error.message : 'Something happened while resetting password...';
+            console.error('Error in changing password...', error);
+            // ? error.message : 'Something happened while resetting password...';
+
+            console.log("Error details:", error);
+            const errorMessage = error instanceof Error ? error.message : 'Something happened...';
+            // let contentType = response.headers.get('content-type');
+            // let errorMessage;
+            // if (error instanceof Error && contentType.includes('')) {
+
+            // }
 			toast.error(errorMessage);
 		} finally {
 			setTimeout(() => { setIsLoading(false) }, 400);
-		} 
+		}
     }
 
     return (
