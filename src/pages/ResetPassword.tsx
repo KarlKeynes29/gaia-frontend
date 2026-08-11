@@ -3,19 +3,18 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 interface ResetPasswordDetails {
-    token: string | '';
-    password: string | '';
+	password: string;
+	confirmPassword: string;
 }
 
 export const ResetPasswordPage: React.FC = () => {
 	const [searchParams] = useSearchParams();
 	const [isLoading, setIsLoading] = useState(false);
-	const [resetPasswordDetails, setResetPasswordDetails] = useState<ResetPasswordDetails>({
-        token: '',
-        password: ''
-	});
-
 	const token = searchParams.get('token') || '';
+	const [resetPasswordDetails, setResetPasswordDetails] = useState<ResetPasswordDetails>({
+		password: '',
+		confirmPassword: ''
+	});
 
     const navigate = useNavigate();
 
@@ -45,7 +44,7 @@ export const ResetPasswordPage: React.FC = () => {
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					token: resetPasswordDetails.token,
+					token: token,
 					password: resetPasswordDetails.password
 				})
 			});
@@ -57,15 +56,13 @@ export const ResetPasswordPage: React.FC = () => {
 
 			toast.success('Password successfully changed!');
 		} catch (error) {
+			const response = 
             console.error('Error in changing password...', error);
             // ? error.message : 'Something happened while resetting password...';
-
-            console.log("Error details:", error);
             const errorMessage = error instanceof Error ? error.message : 'Something happened...';
             // let contentType = response.headers.get('content-type');
             // let errorMessage;
             // if (error instanceof Error && contentType.includes('')) {
-
             // }
 			toast.error(errorMessage);
 		} finally {
@@ -84,6 +81,8 @@ export const ResetPasswordPage: React.FC = () => {
 						type='password'
 						className=''
 						name='password'
+						value={resetPasswordDetails.password}
+						onChange={handleInputChange}
 					></input>
 				</div>
 				<div>
@@ -92,7 +91,8 @@ export const ResetPasswordPage: React.FC = () => {
 						required
 						type='password'
 						className=''
-						name='password'
+						name='confirmPassword'
+						value={resetPasswordDetails.confirmPassword}
 						onChange={handleInputChange}
 					></input>
 				</div>

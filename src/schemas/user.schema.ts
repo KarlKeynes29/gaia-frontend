@@ -1,5 +1,4 @@
 import { z } from 'zod';
-
 // NOTES:
 // The way zod methods are declared, they have an ideal order of what to declare first before the other.
 // (inner to outer)
@@ -17,19 +16,19 @@ export const registerSchema = z.object({
         .trim()
         .max(50, 'Middle name is too long')
         .optional()
-        .nullable(),
+        .or(z.literal('')),
     lastName: z
         .string()
         .trim()
-        .min(10, 'Please enter your last name'),
+        .min(1, 'Please enter your last name'),
     username: z
         .string()
         .trim()
-        .min(1, 'Please enter a username')
+        .min(3, 'Must be at least 3 characters')
         .max(20, 'Username is too long')
         .regex(
-            /^[a-zA-Z0-9_-]+$/,
-            'Username can only contain letters, numbers, underscores, and hyphens'
+	        /^[a-zA-Z0-9_-]+$/,
+	        'Username can only contain letters, numbers, underscores, and hyphens'
         ),
     password: z
         .string()
