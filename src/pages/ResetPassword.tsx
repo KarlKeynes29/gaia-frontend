@@ -56,10 +56,8 @@ export const ResetPasswordPage: React.FC = () => {
 
 			toast.success('Password successfully changed!');
 		} catch (error) {
-			const response = 
             console.error('Error in changing password...', error);
-            // ? error.message : 'Something happened while resetting password...';
-            const errorMessage = error instanceof Error ? error.message : 'Something happened...';
+            const errorMessage = error instanceof Error ? error.message : 'Something happened while changing your processing request...';
             // let contentType = response.headers.get('content-type');
             // let errorMessage;
             // if (error instanceof Error && contentType.includes('')) {
@@ -71,37 +69,50 @@ export const ResetPasswordPage: React.FC = () => {
     }
 
     return (
-		<div className='bg-surface p-8 min-h-fit'>
-			<h2 className='text-left'>Reset your password</h2>
+		<div className='mx-auto mt-35 my-auto bg-surface h-80 w-145 min-w-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
+			<h2 className='text-center'>Reset your password</h2>
 			<form onSubmit={handleSubmit}>
-				<div>
-					<label className='text-xs font-heading uppercase tracking-wider text-text-muted'>New password:</label>
+				<div className='mt-3'>
+					<div className='flex justify-between p-2'>
+						<label className='text-xs font-heading uppercase tracking-wider text-text-muted gap-5'>New password:</label>
+						<p className='text-xs'>Please enter your new password to gain access to Gaia!</p>
+					</div>
 					<input
 						required
 						type='password'
-						className=''
+						className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent font-sans transition-colors'
 						name='password'
 						value={resetPasswordDetails.password}
 						onChange={handleInputChange}
 					></input>
 				</div>
-				<div>
-					<label className='text-xs font-heading uppercase tracking-wide text-text-muted'>Confirm password:</label>
+				<div className='my-2'>
+					<label className='text-xs font-heading uppercase tracking-wide text-text-muted p-2 mb-3'>Confirm password:</label>
 					<input
 						required
 						type='password'
-						className=''
+						className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent'
 						name='confirmPassword'
 						value={resetPasswordDetails.confirmPassword}
 						onChange={handleInputChange}
 					></input>
 				</div>
-				<button
-					type='submit'
-                    className='ml-49 w-45 mt-4 bg-primary hover:bg-primary/90 hover:text-text-muted rounded-lg shadow-[0_4px_0_#39ff14] active:translate-y-0.5 active:shadow-[0_2px_0_#39ff14] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent'
+				<div className='flex flex-row justify-between'>
+					<button
+						type='button'
+	                    className='text-sm font-sans text-text-main  hover:text-text-muted cursor-pointer transition-colors p-2 mt-3'
+	                    onClick={() => navigate('/login')}
+					>
+						Cancel
+				</button>
+					<button
+						type='submit'
+                    className='w-50 max-h-9 mt-4 bg-primary hover:bg-primary/90 rounded-lg shadow-[0_4px_0_#39ff14] active:translate-y-0.5 active:shadow-[0_2px_0_#39ff14] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent'
                 >
                 	{isLoading ? 'Transmitting...' : 'Reset'}
                 </button>
+				</div>
+				
 			</form>
 		</div>
     )

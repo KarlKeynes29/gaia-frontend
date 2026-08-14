@@ -81,15 +81,15 @@ export const ForgotPassword: React.FC<ForgotPasswordModalProps> = ({ isOpen, onC
         ) : (
             <>
                 <div className='fixed inset-0 z-50 w-full flex items-center justify-center bg-black/1 backdrop-blur-md p-4'>
-                    <div className='w-110 bg-surface border border-border rounded-lg my-8 p-8'>
+                    <div className='w-125 bg-surface border border-border rounded-lg my-8 p-8'>
                         <div className='flex justify-between mb-3'>
                             <h2 className='text-center'>Forgot your password?</h2>
                             <button className='hover:text-accent transition-colors text-2xl leading-none' onClick={onClose}>&times;</button>
                         </div>
                         <div>
-                            <div className='flex justify-between p-2'>
+                            <div className='flex justify-between p-2 gap-5'>
                                 <label className='text-xs font-heading uppercase tracking-wider text-text-muted'>Email:</label>
-                                <p className='text-xs'>Enter your email so we can verify!</p>
+                                <p className='text-xs'>A link will be sent to your email to change your credential!</p>
                             </div>
                             <input
                                 className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent font-sans transition-colors'

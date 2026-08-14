@@ -43,6 +43,10 @@
 body {
     background-color: var(--gaia-bg);
     min-height: 100svh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
