@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# Cyber Gaia: A one-stop shop for shopping games and other nerdy stuff!
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

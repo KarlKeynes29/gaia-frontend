@@ -40,7 +40,7 @@ export const ResetPasswordPage: React.FC = () => {
 		setIsLoading(true);
 
 		try {
-			const response = await fetch(`${BASE_URL}/api/v1/reset-password`, {
+			const response = await fetch(`${BASE_URL}/reset-password`, {
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
@@ -69,8 +69,13 @@ export const ResetPasswordPage: React.FC = () => {
     }
 
     return (
+<<<<<<< Updated upstream
 		<div className='mx-auto mt-35 my-auto bg-surface h-80 w-145 min-w-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
 			<h2 className='text-center'>Reset your password</h2>
+=======
+		<div className='bg-surface p-8 min-h-fit mt-3'>
+			<h2 className='text-left'>Reset your password</h2>
+>>>>>>> Stashed changes
 			<form onSubmit={handleSubmit}>
 				<div className='mt-3'>
 					<div className='flex justify-between p-2'>
