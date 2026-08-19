@@ -45,7 +45,7 @@ export const Login: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch(`${BASE_URL}/login`, {
+            const response = await fetch(`${BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -155,6 +155,5 @@ export const Login: React.FC = () => {
                 onClose={() => { setShowForgotPasswordModal(false) }}
             />
         </div>
-
     );
 }

@@ -14,7 +14,8 @@ export const ResetPasswordPage: React.FC = () => {
 	const [resetPasswordDetails, setResetPasswordDetails] = useState<ResetPasswordDetails>({
 		password: '',
 		confirmPassword: ''
-	});
+    });
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -39,7 +40,16 @@ export const ResetPasswordPage: React.FC = () => {
 		if (isLoading) return;
 		setIsLoading(true);
 
-		try {
+        try {
+            if (!resetPasswordDetails.password || !resetPasswordDetails.confirmPassword) {
+                toast.error("Please enter your password for both fields.");
+            }
+
+            // if (resetPasswordDetails.password.length < 8) {}
+
+            // if (
+
+            // )
 			const response = await fetch(`${BASE_URL}/reset-password`, {
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
@@ -70,21 +80,30 @@ export const ResetPasswordPage: React.FC = () => {
 
     return (
 		<div className='mx-auto mt-35 my-auto bg-surface h-80 w-145 min-w-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
-			<h2 className='text-center'>Reset your password</h2>
+			<h1 className='text-center'>Reset your password</h1>
 			<form onSubmit={handleSubmit}>
 				<div className='mt-3'>
 					<div className='flex justify-between p-2'>
 						<label className='text-xs font-heading uppercase tracking-wider text-text-muted gap-5'>New password:</label>
 						<p className='text-xs'>Please enter your new password to gain access to Gaia!</p>
-					</div>
-					<input
-						required
-						type='password'
-						className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent font-sans transition-colors'
-						name='password'
-						value={resetPasswordDetails.password}
-						onChange={handleInputChange}
-					></input>
+                    </div>
+                    <div>
+                        <input
+    						required
+    						type='password'
+    						className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent font-sans transition-colors'
+    						name='password'
+    						value={resetPasswordDetails.password}
+    						onChange={handleInputChange}
+                        ></input>
+                        <button
+                            type='button'
+                            onClick={() => setShowPassword((prev) => !prev)}
+                        >
+                            <svg></svg>
+                        </button>
+                    </div>
+
 				</div>
 				<div className='my-2'>
 					<label className='text-xs font-heading uppercase tracking-wide text-text-muted p-2 mb-3'>Confirm password:</label>
