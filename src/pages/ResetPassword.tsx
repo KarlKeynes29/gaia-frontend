@@ -79,7 +79,7 @@ export const ResetPasswordPage: React.FC = () => {
     }
 
     return (
-		<div className='mx-auto mt-35 my-auto bg-surface h-80 w-145 min-w-fit p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
+		<div className='mx-auto mt-35 my-auto bg-surface h-80 w-135 p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
 			<h1 className='text-center'>Reset your password</h1>
 			<form onSubmit={handleSubmit}>
 				<div className='mt-3'>
@@ -100,7 +100,13 @@ export const ResetPasswordPage: React.FC = () => {
                             type='button'
                             onClick={() => setShowPassword((prev) => !prev)}
                         >
-                            <svg></svg>
+                            <svg
+                                width=''
+                                className=''
+
+                            >
+                                <circle />
+                            </svg>
                         </button>
                     </div>
 
