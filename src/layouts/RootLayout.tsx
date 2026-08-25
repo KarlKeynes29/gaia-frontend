@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 
 export const RootLayout: React.FC = () => {
     const location = useLocation();
-    const hideNavPaths = ['/login', '/register'];
+    const hideNavPaths = ['/login', '/register', '/reset-password'];
     const shouldHideNavbar = hideNavPaths.includes(location.pathname);
 
     return (

@@ -45,12 +45,7 @@ export const ResetPasswordPage: React.FC = () => {
                 toast.error("Please enter your password for both fields.");
             }
 
-            // if (resetPasswordDetails.password.length < 8) {}
-
-            // if (
-
-            // )
-			const response = await fetch(`${BASE_URL}/reset-password`, {
+			const response = await fetch(`${BASE_URL}/users/reset-password`, {
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
@@ -79,7 +74,7 @@ export const ResetPasswordPage: React.FC = () => {
     }
 
     return (
-		<div className='mx-auto mt-35 my-auto bg-surface h-80 w-135 p-8 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
+		<div className='sticky mx-auto mt-35 my-auto bg-surface sm-80 sm:w-125 w-100 p-6 border border-border rounded shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all'>
 			<h1 className='text-center'>Reset your password</h1>
 			<form onSubmit={handleSubmit}>
 				<div className='mt-3'>
@@ -87,29 +82,31 @@ export const ResetPasswordPage: React.FC = () => {
 						<label className='text-xs font-heading uppercase tracking-wider text-text-muted gap-5'>New password:</label>
 						<p className='text-xs'>Please enter your new password to gain access to Gaia!</p>
                     </div>
-                    <div>
+                    <div className='relative flex items-center w-full'>
                         <input
     						required
-    						type='password'
+    						type={showPassword ? 'text' : 'password'}
     						className='w-full bg-bg border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent font-sans transition-colors'
     						name='password'
     						value={resetPasswordDetails.password}
-    						onChange={handleInputChange}
+                            onChange={handleInputChange}
+                            placeholder='******'
                         ></input>
                         <button
                             type='button'
                             onClick={() => setShowPassword((prev) => !prev)}
+                            aria-label={showPassword ? 'Hide password' : 'Show password'}
+                            className='absolute right-4 text-text-muted hover:text-text-main transition-colors active:scale-95'
                         >
-                            <svg
-                                width=''
-                                className=''
+                            {showPassword ? (
+                                <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#00cc00" className=''><path fill-rule="evenodd" clip-rule="evenodd" d="M1 10c0-3.9 3.1-7 7-7s7 3.1 7 7h-1c0-3.3-2.7-6-6-6s-6 2.7-6 6H1zm4 0c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3zm1 0c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2z"/></svg>
 
-                            >
-                                <circle />
-                            </svg>
+
+                            ) : (
+                                  <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#00cc00"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 2c-1.5 0-2.8.4-3.9 1.2l.8.7C5.8 3.3 6.8 3 8 3c3.3 0 6 2.7 6 6h1c0-3.9-3.1-7-7-7zM1 3l1.6 1.5C1.6 5.7 1 7.3 1 9h1c0-1.5.5-2.8 1.4-3.8l2.2 2C5.2 7.7 5 8.3 5 9c0 1.7 1.3 3 3 3 .8 0 1.5-.3 2-.8l3 2.8.7-.7-12-11L1 3zm5.3 4.9l2.9 2.7c-.3.2-.7.4-1.2.4-1.1 0-2-.9-2-2 0-.4.1-.8.3-1.1zM11 9.5l-1-.9c-.2-.8-.9-1.5-1.8-1.6l-1-.9c.3-.1.5-.1.8-.1 1.7 0 3 1.3 3 3v.5z"/></svg>
+                            )}
                         </button>
                     </div>
-
 				</div>
 				<div className='my-2'>
 					<label className='text-xs font-heading uppercase tracking-wide text-text-muted p-2 mb-3'>Confirm password:</label>
@@ -125,7 +122,7 @@ export const ResetPasswordPage: React.FC = () => {
 				<div className='flex flex-row justify-between'>
 					<button
 						type='button'
-	                    className='text-sm font-sans text-text-main  hover:text-text-muted cursor-pointer transition-colors p-2 mt-3'
+	                    className='text-sm font-sans text-text-main  hover:text-text-muted cursor-pointer transition-colors p-4 mt-3'
 	                    onClick={() => navigate('/login')}
 					>
 						Cancel

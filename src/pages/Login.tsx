@@ -90,7 +90,7 @@ export const Login: React.FC = () => {
        <div className="flex min-h-[80vh] items-center justify-center px-4">
             <div
                 ref={containerRef}
-                className="login-container bg-surface w-full max-w-md h-105 p-8 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all"
+                className="login-container bg-surface w-full max-w-md h-105 p-8 mt-30 border border-border rounded-xl shadow-[0_0_15px_rgba(50,27,99,0.5)] transition-all"
             >
                 <h2 className={`text-3xl font-heading tracking-wide text-center mb-4 uppercase transform transition-all scale-100 duration-300 ${isError ? 'text-red-700 tracking-widest blur-[xs]' : 'text-primary tracking-wide blur-0'}`}>
                     {isError ? '☠️ Access Denied ☠️' : 'Enter Cyber Gaia'}
