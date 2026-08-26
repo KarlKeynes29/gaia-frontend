@@ -42,7 +42,7 @@ export const ResetPasswordPage: React.FC = () => {
 
         try {
             if (!resetPasswordDetails.password || !resetPasswordDetails.confirmPassword) {
-                toast.error("Please enter your password for both fields.");
+                return toast.error("Please enter your password for both fields.");
             }
 
 			const response = await fetch(`${BASE_URL}/users/reset-password`, {
@@ -59,7 +59,8 @@ export const ResetPasswordPage: React.FC = () => {
 				throw new Error(errorData.message || 'Error while changing password.');
 			}
 
-			toast.success('Password successfully changed!');
+            toast.success('Password successfully changed!');
+            navigate('/login');
 		} catch (error) {
             console.error('Error in changing password...', error);
             const errorMessage = error instanceof Error ? error.message : 'Something happened while changing your processing request...';
