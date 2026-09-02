@@ -19,8 +19,8 @@ export const HomePage: React.FC = () => {
     useEffect(() => {
         const fetchItemsToShowcase = async () => {
 			try {
-				setIsLoading(true);
-				
+                setIsLoading(true);
+
                 const BASE_URL = import.meta.env.BASE_URL;
 				const response = await fetch(`${BASE_URL}/games?featured=true`);
 
